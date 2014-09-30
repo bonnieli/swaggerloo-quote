@@ -1,78 +1,91 @@
-<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Swaggerloo-quote by bonnieli</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<head>
+		<title>Swaggerloo Order Form</title>
+		<link href="jqueryui/css/ui-lightness-slideronly/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+		<script src="jqueryui/js/jquery-1.9.1.js"></script>
+		<script src="jqueryui/js/jquery-ui-1.10.2.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="prices.js"></script>
+		<script src="static_variables.js"></script>
+		<script src="list.js"></script>
+		<script src="get_total.js"></script>
+		<link href="select2/select2.css" rel="stylesheet"/>
+    	<script src="select2/select2.js"></script>
+    	<script src="popup.js"></script>
+    	<script>
+        	$(document).ready(function() {
+        		$(".apparel").select2(); 
+        		$('#setup_box, #quantity_box, .screen_charge, #personalization').hide();
+        		
+        	});
+    	</script>
+	</head>
+	<body>
+		<div id="header" align="center">
+			<img src="images/logo.png" width="200px"><br />
+			<a href="http://swaggerloo.ca">SWAGGERLOO Home</a> &raquo;
+			<a href="./index.html">FORM Home</a> &raquo;
+			<a href="#" id="pop" >FAQ</a>
+		</div>
+		
+		<div id="container">
+		
+			<div id="overlay_form" >
+				<h1>FAQ</h1>
+				<h4>Does this quoting form calculate the <em>actual</em> total cost?</h4>
+				Although we try to be as accurate as possible with this online quoting form, some prices may differ depending on what customers are actually looking for. When we look over your order, we will confirm every detail just to make sure what you have quoted matches exactly what you are looking for! The final price will be calculated once details have been communicated throughly to our Swaggerloo representatives and confirmed. <a href="http://swaggerloo.ca/contact.php" target="_blank">Contact Us!</a>
+			
+				<h4>I'm ready to order! What's my next step?</h4>
+				Awesome! Head on over to our <a href="http://swaggerloo.ca/contact.php" target="_blank">contact page</a>, <b>copy and paste</b> the table of information so we know exactly what you're looking for and a Swaggerloo representative will contact you as soon as possible!
+			
+				<h4>Does Swaggerloo do embroidery?</h4>
+				Yes! At this moment, we do not have an online quoting form for embroidery but feel free to <a href="http://swaggerloo.ca/contact.php" target="_blank">contact us</a> for more details!
+			
+				<h4>What is the minimum and maximum quantity order?</h4>
+				Minimum is 1, and maximum is 999. However, Swaggerloo recommends customers to purchase a minimum quantity of 12. The quoting form will give you a good idea of why we recommend a quantity of 12+. 
+			
+				<h4>I am looking for something specific.</h4>
+				If you don't think the quoting form is helping you, feel free to <a href="http://swaggerloo.ca/contact.php" target="_blank">contact us</a>! 
+			
+				<h4>What is personalization?</h4>
+				Add a little personalization to every apparel! This is a popular choice for student groups and residence buildings. Maximum of two words (perhaps first and last name) per personalization. 
+				
+				<h4>Question not answered?</h4>
+				<a href="http://swaggerloo.ca/contact.php" target="_blank">E-mail us</a>! 
+				
+				<p><div id="close" align="right"><a href="#"><strong>CLOSE [X]</strong></a></div></p>
+			
+			</div>		
+		
+		
+			<h3>Select Item:</h3>
+			<select class="content apparel"><option>Select...</option></select>
+			<h3>What is the quantity you're looking for?</h3>
+			<div id="quantity_box">
+				<input type="text" id="quantity_amount" disabled style="border: 0; color: #f6931f; font-weight: bold;" />
+				<div id="quantity"></div>
+			</div>
+			<h3>How many graphics do you want to print?</h3>
+			<div id="setup_box">
+				<input type="text" id="setup_amount" disabled style="border: 0; color: #f6931f; font-weight: bold;" />
+				<div id="setup"></div>
+			</div>
+			<div class="screen_charge_boxes"></div>
+			<h3>How many garments would you like personalized?</h3>
+			<div id="personalization">
+				<input type="text" id="personalize_amount" disabled style="border: 0; color: #f6931f; font-weight: bold;" />
+				<div id="personalize"></div>
+			</div>
+			<div class="results">
+				<div class="form"></div>
+			</div>
+		</div>
+		
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/bonnieli/swaggerloo-quote">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/bonnieli/swaggerloo-quote/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/bonnieli/swaggerloo-quote/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Swaggerloo-quote</h1>
-          <p>Quote generator for Swaggerloo</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/bonnieli">bonnieli</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
-
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+		
+	<script>
+	//function test() {$('.sc_DIV').each(function(e,t) {alert('omg')});}
+	
+	</script>
+	</body>
 </html>
